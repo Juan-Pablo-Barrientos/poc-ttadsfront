@@ -1,0 +1,19 @@
+<div *ngFor="let map of maps" class="m-2 p-2 border lead">
+    <li><strong>Nombre: </strong>{{map.name}}</li>
+    <li><strong>Descripcion: </strong>{{map.description}}</li>
+    <li><strong>Tamaño del mapa: </strong>{{map.sizeX}}X{{map.sizeY}}</li>
+  <li><strong>Misiones</strong>
+    <ul>
+      <li *ngFor="let quest of map.quests">
+        <strong>Nombre de Mision:</strong> {{quest.name}}
+      </li>
+    </ul>
+  </li>
+  <li><strong>Npcs</strong>
+    <ul>
+      <li *ngFor="let npc of map.npcs">
+        <strong>Nombre del Npc:</strong> {{npc.name}}
+      </li>
+    </ul>
+  </li>
+</div>

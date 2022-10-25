@@ -1,0 +1,7 @@
+<div class="card w-100 shadow m-2">
+  <div class="card-body px-4">
+    <div class="card-text text-center " style="height: 25px; overflow: hidden;" *ngFor="let key of equipmentKeys">
+    <p *ngIf="!(key=='__v'||key=='_id')"><strong>{{key}}: </strong>{{equipment[key]}}</p>
+    </div>
+  </div>
+</div>

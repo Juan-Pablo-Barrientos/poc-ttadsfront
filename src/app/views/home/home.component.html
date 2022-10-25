@@ -1,0 +1,40 @@
+<div class="row text-center">
+  <h5 class="display-5 text-center border" *ngIf="(sqlGetsTotal/sqlGets)/(moongooseGetsTotal/mooongoseGets)"> Moongoose getAll %{{(((sqlGetsTotal/sqlGets)/(moongooseGetsTotal/mooongoseGets))-1)*100| number:'1.0-0'}} más rapido</h5>
+  <h5 class="display-5 text-center border" *ngIf="(sqlInsertTime/mongooseInsertTime)"> Moongoose insert %{{(((sqlInsertTime)/(mongooseInsertTime))-1)*100| number:'1.0-0'}} más rapido</h5>
+</div>
+<div class="row">
+  <div class="col border text-center">
+    <h1 class="text-center h1 m-2">Sequelize</h1>
+    <button class="btn btn-primary m-2" (click)="sqlGetAllEquipment()">Buscar equipamento</button>
+    <button class="btn btn-primary m-2" (click)="sqlInsertEquipment()">Insertar 1000 equipamentos</button>
+    <p>Elementos: {{sqlEquipments.length}}</p>
+    <p>Tiempo de getAll: {{sqlGetsTotal/sqlGets| number:'1.0-2'}} ms</p>
+    <p>Tiempo de insert: {{sqlInsertTime| number:'1.0-2'}} ms</p>
+    <hr>
+    <div class="card w-100 shadow m-2" *ngFor="let equipment of sqlEquipments.slice(0,10)">
+      <div class="card-body px-4">
+        <div class="text-center ">
+        <p><strong>Nombre: </strong>{{equipment.name}}</p>
+        <p><strong>Categoria: </strong>{{equipment.category.description}}</p>
+        <p><strong>Tipo: </strong>{{equipment.category.property}}</p>
+        <p><strong>Valor: </strong>{{equipment.category.value}}</p>
+        <p *ngIf="equipment.firstProperty"><strong>{{equipment.firstProperty}}</strong></p>
+        <p *ngIf="equipment.secondProperty"><strong>{{equipment.secondProperty}}</strong></p>
+        <p *ngIf="equipment.thirdProperty"><strong>{{equipment.thirdProperty}}</strong></p>
+        <p *ngIf="equipment.fourthProperty"><strong>{{equipment.fourthProperty}}</strong></p>
+        <p *ngIf="equipment.fifthProperty"><strong>{{equipment.fifthProperty}}</strong></p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col border text-center">
+    <h1 class="text-center h1 m-2">Mongoose</h1>
+    <button class="btn btn-primary m-2" (click)="mongooseGetAllEquipment()">Buscar equipamento</button>
+    <button class="btn btn-primary m-2" (click)="mongooseInsertEquipment()">Insertar 1000 equipamentos</button>
+    <p>Elementos: {{mongoEquipments.length}}</p>
+    <p>Tiempo de getAll: {{moongooseGetsTotal/mooongoseGets| number:'1.0-2'}} ms</p>
+    <p>Tiempo de insert: {{mongooseInsertTime| number:'1.0-2'}} ms</p>
+    <hr>
+    <app-equipment-card class="col-12 col-sm-6 mb-4 p-5'" *ngFor="let equipment of mongoEquipments.slice(0,10);" [equipment]="equipment"></app-equipment-card>
+  </div>
+</div>

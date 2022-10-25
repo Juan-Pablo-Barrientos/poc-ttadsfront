@@ -1,0 +1,16 @@
+<div *ngFor="let quest of quests" class="m-2 p-2 border lead">
+  <ul>
+    <li>
+      <strong>Nombre: </strong>{{quest.name}}
+    </li>
+    <li>
+      <strong>Objetivo: </strong> {{quest.description}}
+    </li>
+    <li>
+      <strong>Locación: </strong>{{quest.map.name}}
+    </li>
+    <li>
+      <strong>Npc de mision: </strong>{{quest.npc.name}}
+    </li>
+  </ul>
+</div>
